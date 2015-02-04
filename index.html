@@ -1,1 +1,49 @@
-Hello World!
+---
+title: Who am I
+nav: projects
+subnav: exemplar-home
+layout: default
+---
+
+<h1>{{ page.title }}</h1>
+
+<p>
+  This is an example of the default theme I use for my jekyll sites. This
+  theme is used for my <a href="http://tybenz.com">blog</a> and my project sites.
+</p>
+
+<p>
+  This site uses a combination of the following:
+</p>
+
+<ol>
+  <li><a href="http://jekyllrb.com/">Jekyll</a>: Static site generator</li>
+  <li><a href="http://sass-lang.com">Sass</a>: CSS preprocessor</li>
+  <li><a href="http://bourbon.io">Bourbon</a>: Set of generic Sass mixins</li>
+  <li><a href="http://neat.bourbon.io">Neat</a>: Set of grid-based Sass mixins (dependent on Bourbon)</li>
+  <li>Fonts: <a href="http://www.fontsquirrel.com/fonts/bebas-neue">Bebas Neue</a>, <a href="https://github.com/adobe/source-sans-pro">Adobe Source Sans Pro</a>, <a href="https://github.com/adobe/source-code-pro">Adobe Source Code Pro</a></li>
+</ol>
+
+<h1>Boxes</h1>
+<div id="projects">
+  {% for page in site.pages %}
+    {% if page.box == true %}
+      {% if page.link %}
+        <a class="project" href="{{ page.link }}">
+      {% else %}
+        <a class="project" href="{{ page.url | replace: '/index.html', '' }}">
+      {% endif %}
+          <div class="project-header">
+              <h2>
+                  {{ page.title }}
+              </h2>
+          </div>
+          <div class="project-body">
+            <p>
+                {{ page.summary }}
+            </p>
+          </div>
+        </a>
+    {% endif %}
+  {% endfor %}
+</div>
